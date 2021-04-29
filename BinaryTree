@@ -1,0 +1,121 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package javaapplication7;
+import java.util.*;
+
+/**
+ *
+ * @author kalka prasad
+ */
+public class binarytree {
+    
+    static Scanner sc= null; // this is the Globle  object of Scanner Classs.
+    static int a=90;
+    
+    
+    public static void main(String args[])
+    {
+        sc= new Scanner(System.in);
+        System.out.println("Hello World");
+        int b= a;
+       
+       node root= createTree();
+       inorder(root);
+       preorder(root);
+       postorder(root);
+    }
+   
+    static node createTree()
+{
+   
+   node root= null;
+   System.out.println("Enter The new Value");
+   int data=sc.nextInt(); // take some input...
+   if(data==-1)
+   {
+       
+       return null;
+   }
+   else
+   { 
+       root= new  node(data);
+       System.out.println("Enter the left for"+data);
+       root.left=createTree();
+       System.out.println("Enter the Right for"+data);
+       root.right= createTree();     
+   }
+  
+   return root;
+}
+    
+    
+    static  void inorder(node nds)
+    {
+        if(nds==null)
+        {
+            return;
+        }
+        else
+        {
+            inorder(nds.left);
+            System.out.print(nds.data+" ");
+            inorder(nds.right);
+            
+        }
+        
+    }
+    
+    
+    static void preorder(node nds)
+    {
+        if(nds==null)
+        {
+            return;
+        }
+        else
+        {
+System.out.print(nds.data+" ");
+preorder(nds.left);
+preorder(nds.right);
+        }
+    }
+    
+    // postorder
+    
+    static void postorder(node nds)
+    {
+      if(nds==null)
+      {
+          return ;
+      }
+      else
+      {
+          
+          postorder(nds.left);
+          postorder(nds.right);
+          System.out.print(nds.data+" ");
+          
+      }
+        
+    }
+    
+    
+    
+}
+class node{
+    node left,right;
+    int data;
+    node(int data)
+    {
+        this.data = data;
+        
+    }
+    
+}
+
+/// created By Kalka Prasad. 
+// kalkaprasad59@gmail.com
